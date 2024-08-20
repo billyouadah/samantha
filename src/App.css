@@ -1,4 +1,4 @@
-#root {
+/* #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
@@ -58,7 +58,7 @@
 }
 
 .step.active {
-  background-color: #007bff;
+  background-color: #ff009d;
 }
 
 button {
@@ -70,3 +70,228 @@ button {
 input[type="range"] {
   margin-top: 20px;
 }
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+  background-color: #df39c9; 
+  color: white;
+  padding: 10px 20px;
+}
+
+.Navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Navbar .navbar-brand {
+  font-size: 1.5rem;
+}
+
+.Navbar .navbar-nav {
+  margin-left: auto;
+}
+
+.Navbar .nav-link {
+  color: white;
+  margin: 0 10px;
+  padding: 10px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.Navbar .nav-link:hover {
+  background-color: #495057;
+  color: #fff;
+}
+
+footer {
+  background-color: #df39c9; 
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  margin-top: auto;
+}
+
+
+a.nav-link {
+  color: #fff;
+}
+
+a.navbar-brand {
+  color: #fff;
+}
+ */
+
+
+ 
+ body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5; /* Couleur de fond générale */
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+  background-color: #df39c9; /* Couleur du header */
+  color: white;
+  padding: 10px 20px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.Navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.Navbar .navbar-brand {
+  font-size: 1.5rem;
+}
+
+.Navbar .navbar-nav {
+  margin-left: auto;
+}
+
+.Navbar .nav-link {
+  color: white;
+  margin: 0 10px;
+  padding: 10px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.Navbar .nav-link:hover {
+  background-color: #495057;
+  color: #fff;
+}
+
+.App-header {
+  margin-top: 60px; /* Ajuste pour le header fixe */
+  text-align: center;
+  padding: 2rem;
+  background-color: #282c34;
+  color: white;
+}
+
+.sequencer-grid {
+  display: grid;
+  grid-template-columns: repeat(16, 40px);
+  gap: 5px;
+  margin: 20px auto; /* Centre horizontalement */
+  max-width: 640px; /* Ajuste comme nécessaire */
+}
+
+.step-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.step {
+  background-color: #61dafb;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  margin: 5px;
+  transition: background-color 0.3s;
+}
+
+.step.active {
+  background-color: #21a1f1;
+}
+
+button {
+  margin: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: #61dafb; /* Couleur des boutons */
+  color: white;
+  border: none;
+  border-radius: 5px; /* Coins arrondis pour les boutons */
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #21a1f1; /* Couleur au survol */
+}
+
+input[type="range"] {
+  margin: 20px 0;
+}
+
+footer {
+  background-color: #df39c9; /* Couleur du footer */
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  margin-top: auto;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+
+.drum-pad {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.1s;
+}
+
+.drum-pad:hover {
+  background-color: #0056b3;
+}
+
+.drum-pad:active {
+  transform: scale(0.95);
+}
+
+.drum-pads {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.play-button {
+  background-color: #007bff; /* Couleur de fond du bouton Play */
+  color: white; /* Couleur du texte du bouton Play */
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.play-button:hover {
+  background-color: #0056b3; /* Couleur de fond au survol */
+}
+

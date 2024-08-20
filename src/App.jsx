@@ -1,18 +1,25 @@
 // import { useState } from 'react'
-import './App.css'
+import "./App.css";
 // import { Button } from 'react-bootstrap';
-import Sequencer from './components/Sequencer';
-
+import React from "react";
+import Sequencer from "./components/Sequencer";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import { Container } from "react-bootstrap";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>Boîte à rythmes Samantha</h1>
-        <Sequencer />
-      </header>
+      <Header />
+      <Container>
+        <header className="App-header">
+          <h1>Boîte à rythmes Samantha</h1>
+          <Sequencer />
+        </header>
+      </Container>
+      <Footer />
     </div>
   );
 }
 
-export default App
+export default App;
