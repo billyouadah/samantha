@@ -194,16 +194,14 @@ header {
   color: #fff;
 }
 
-/* Header de l'application */
 .App-header {
-  margin-top: 60px; /* Ajuste pour le header fixe */
+  margin-top: 60px; 
   text-align: center;
   padding: 2rem;
   background-color: #282c34;
   color: white;
 }
 
-/* Séquenceur */
 .sequencer-grid {
   display: flex;
   flex-direction: column;
@@ -219,7 +217,7 @@ header {
 }
 
 .drum-pad-container {
-  margin-right: 10px; /* Espace entre le DrumPad et les boutons de séquence */
+  margin-right: 10px; 
 }
 
 .step {
@@ -229,7 +227,7 @@ header {
   padding: 10px;
   cursor: pointer;
   font-size: 14px;
-  margin: 0 5px; /* Espacement entre les boutons de séquence */
+  margin: 0 5px; 
   transition: background-color 0.3s;
 }
 
@@ -252,7 +250,6 @@ button:hover {
   background-color: #21a1f1;
 }
 
-/* Boutons DrumPad */
 .drum-pad {
   background-color: #ff00ff;
   color: white;
@@ -280,7 +277,6 @@ button:hover {
   margin-top: 20px;
 }
 
-/* Bouton Play */
 .play-button {
   background-color: #007bff;
   color: white;
@@ -295,12 +291,11 @@ button:hover {
   background-color: #0056b3;
 }
 
-/* Contrôleur de tempo */
+
 input[type="range"] {
   margin: 20px 0;
 }
 
-/* Footer */
 footer {
   background-color: #df39c9;
   color: white;
