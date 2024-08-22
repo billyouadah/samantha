@@ -13,7 +13,7 @@ function App() {
       <Header />
       <Container>
         <header className="App-header">
-          <h1>Boîte à rythmes Samantha</h1>
+          <h1>Samantha</h1>
           <Sequencer />
         </header>
       </Container>

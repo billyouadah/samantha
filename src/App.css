@@ -133,13 +133,15 @@ a.navbar-brand {
 }
  */
 
+ @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
  
  body {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
-  background-color: #f5f5f5; /* Couleur de fond générale */
+  background-color: #d68e8e;
+  
 }
 
 .App {
@@ -147,10 +149,16 @@ a.navbar-brand {
   flex-direction: column;
   min-height: 100vh;
 }
+.App-header {
+  color: #ff00c8 !important; 
+  font-family: 'Press Start 2P', cursive;
 
+}
+
+/* Header */
 header {
-  background-color: #df39c9; /* Couleur du header */
-  color: white;
+  background-color: #df39c9;
+  color: rgb(215, 54, 167);
   padding: 10px 20px;
   position: fixed;
   width: 100%;
@@ -186,6 +194,7 @@ header {
   color: #fff;
 }
 
+/* Header de l'application */
 .App-header {
   margin-top: 60px; /* Ajuste pour le header fixe */
   text-align: center;
@@ -194,18 +203,23 @@ header {
   color: white;
 }
 
+/* Séquenceur */
 .sequencer-grid {
-  display: grid;
-  grid-template-columns: repeat(16, 40px);
-  gap: 5px;
-  margin: 20px auto; /* Centre horizontalement */
-  max-width: 640px; /* Ajuste comme nécessaire */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px auto;
+  max-width: 640px;
 }
 
-.step-container {
+.step-row {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.drum-pad-container {
+  margin-right: 10px; /* Espace entre le DrumPad et les boutons de séquence */
 }
 
 .step {
@@ -215,7 +229,7 @@ header {
   padding: 10px;
   cursor: pointer;
   font-size: 14px;
-  margin: 5px;
+  margin: 0 5px; /* Espacement entre les boutons de séquence */
   transition: background-color 0.3s;
 }
 
@@ -227,35 +241,20 @@ button {
   margin: 5px;
   padding: 10px 20px;
   cursor: pointer;
-  background-color: #61dafb; /* Couleur des boutons */
+  background-color: #61dafb;
   color: white;
   border: none;
-  border-radius: 5px; /* Coins arrondis pour les boutons */
+  border-radius: 5px;
   transition: background-color 0.3s;
 }
 
 button:hover {
-  background-color: #21a1f1; /* Couleur au survol */
+  background-color: #21a1f1;
 }
 
-input[type="range"] {
-  margin: 20px 0;
-}
-
-footer {
-  background-color: #df39c9; /* Couleur du footer */
-  color: white;
-  padding: 10px 20px;
-  text-align: center;
-  margin-top: auto;
-  width: 100%;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-}
-
+/* Boutons DrumPad */
 .drum-pad {
-  background-color: #007bff;
+  background-color: #ff00ff;
   color: white;
   border: none;
   border-radius: 5px;
@@ -267,7 +266,7 @@ footer {
 }
 
 .drum-pad:hover {
-  background-color: #0056b3;
+  background-color: #cc00cc;
 }
 
 .drum-pad:active {
@@ -281,9 +280,10 @@ footer {
   margin-top: 20px;
 }
 
+/* Bouton Play */
 .play-button {
-  background-color: #007bff; /* Couleur de fond du bouton Play */
-  color: white; /* Couleur du texte du bouton Play */
+  background-color: #007bff;
+  color: white;
   border: none;
   border-radius: 5px;
   padding: 10px 20px;
@@ -292,6 +292,23 @@ footer {
 }
 
 .play-button:hover {
-  background-color: #0056b3; /* Couleur de fond au survol */
+  background-color: #0056b3;
 }
 
+/* Contrôleur de tempo */
+input[type="range"] {
+  margin: 20px 0;
+}
+
+/* Footer */
+footer {
+  background-color: #df39c9;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  margin-top: auto;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}

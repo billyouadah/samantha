@@ -3,6 +3,7 @@ import * as Tone from "tone";
 import Clap from "../assets/Clap.wav";
 import Kick from "../assets/Kick.wav";
 import OH from "../assets/Open-hat.wav";
+import DrumPad from "./DrumPad";
 
 const instruments = {
   Clap: Clap,
@@ -14,7 +15,7 @@ const Sequencer = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [tempo, setTempo] = useState(120);
   const [steps, setSteps] = useState(
-    Array(16).fill({ Clap: false, Kick: false, OpenHat: false })
+    Array(16).fill({ Clap: false, Kick: false, OH: false })
   );
 
   useEffect(() => {
@@ -60,17 +61,20 @@ const Sequencer = () => {
 
   return (
     <div>
-      <h2>Séquenceur</h2>
+      <h2>Drum Machine</h2>
       <div className="sequencer-grid">
-        {steps.map((step, index) => (
-          <div key={index} className="step-container">
-            {Object.keys(instruments).map((instrument) => (
+        {Object.keys(instruments).map((instrument) => (
+          <div key={instrument} className="step-row">
+            <div className="drum-pad-container">
+              <DrumPad sound={instruments[instrument]} label={instrument} />
+            </div>
+            {steps.map((step, index) => (
               <button
-                key={instrument}
+                key={index}
                 className={`step ${step[instrument] ? "active" : ""}`}
                 onClick={() => toggleInstrumentOnStep(index, instrument)}
               >
-                {instrument}
+                {index + 1}
               </button>
             ))}
           </div>
