@@ -1,4 +1,4 @@
-#root {
+/* #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
@@ -58,7 +58,7 @@
 }
 
 .step.active {
-  background-color: #007bff;
+  background-color: #ff009d;
 }
 
 button {
@@ -69,4 +69,246 @@ button {
 
 input[type="range"] {
   margin-top: 20px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+  background-color: #df39c9; 
+  color: white;
+  padding: 10px 20px;
+}
+
+.Navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Navbar .navbar-brand {
+  font-size: 1.5rem;
+}
+
+.Navbar .navbar-nav {
+  margin-left: auto;
+}
+
+.Navbar .nav-link {
+  color: white;
+  margin: 0 10px;
+  padding: 10px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.Navbar .nav-link:hover {
+  background-color: #495057;
+  color: #fff;
+}
+
+footer {
+  background-color: #df39c9; 
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  margin-top: auto;
+}
+
+
+a.nav-link {
+  color: #fff;
+}
+
+a.navbar-brand {
+  color: #fff;
+}
+ */
+
+ @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+ 
+ body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #d68e8e;
+  
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.App-header {
+  color: #ff00c8 !important; 
+  font-family: 'Press Start 2P', cursive;
+
+}
+
+/* Header */
+header {
+  background-color: #df39c9;
+  color: rgb(215, 54, 167);
+  padding: 10px 20px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.Navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.Navbar .navbar-brand {
+  font-size: 1.5rem;
+}
+
+.Navbar .navbar-nav {
+  margin-left: auto;
+}
+
+.Navbar .nav-link {
+  color: white;
+  margin: 0 10px;
+  padding: 10px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.Navbar .nav-link:hover {
+  background-color: #495057;
+  color: #fff;
+}
+
+/* Header de l'application */
+.App-header {
+  margin-top: 60px; /* Ajuste pour le header fixe */
+  text-align: center;
+  padding: 2rem;
+  background-color: #282c34;
+  color: white;
+}
+
+/* Séquenceur */
+.sequencer-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px auto;
+  max-width: 640px;
+}
+
+.step-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.drum-pad-container {
+  margin-right: 10px; /* Espace entre le DrumPad et les boutons de séquence */
+}
+
+.step {
+  background-color: #61dafb;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  margin: 0 5px; /* Espacement entre les boutons de séquence */
+  transition: background-color 0.3s;
+}
+
+.step.active {
+  background-color: #21a1f1;
+}
+
+button {
+  margin: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: #61dafb;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #21a1f1;
+}
+
+/* Boutons DrumPad */
+.drum-pad {
+  background-color: #ff00ff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.1s;
+}
+
+.drum-pad:hover {
+  background-color: #cc00cc;
+}
+
+.drum-pad:active {
+  transform: scale(0.95);
+}
+
+.drum-pads {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+/* Bouton Play */
+.play-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.play-button:hover {
+  background-color: #0056b3;
+}
+
+/* Contrôleur de tempo */
+input[type="range"] {
+  margin: 20px 0;
+}
+
+/* Footer */
+footer {
+  background-color: #df39c9;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  margin-top: auto;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
 }
