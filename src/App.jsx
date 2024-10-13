@@ -2,9 +2,9 @@
 import "./App.css";
 // import { Button } from 'react-bootstrap';
 import React from "react";
-import Sequencer from "./components/Sequencer";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+import Sequencer from "./components/Sequencer/Sequencer";
+import Header from "./components/Header/Header";
+// import Footer from "./components/Footer/Footer";
 import { Container } from "react-bootstrap";
 
 function App() {
@@ -12,12 +12,13 @@ function App() {
     <div className="App">
       <Header />
       <Container>
-        <header className="App-header">
+        <div className="App-body">
+
           <h1 className="h1">Samantha</h1>
           <Sequencer />
-        </header>
+        </div>
       </Container>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

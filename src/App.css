@@ -160,7 +160,7 @@ a.navbar-brand {
   flex-direction: column;
   min-height: 100vh;
 }
-.App-header {
+.App-body {
   color: #ff00c8; 
   /* font-family: 'Press Start 2P', cursive; */
   /* font-family: "Geostar Fill", serif; */
@@ -262,7 +262,7 @@ button {
   padding: 10px 20px;
   cursor: pointer;
   background-color: #61dafb;
-  color: white;
+  color: #ff00ff;
   border: none;
   border-radius: 5px;
   transition: background-color 0.3s;
@@ -301,7 +301,7 @@ button:hover {
 }
 
 .play-button {
-  background-color: #007bff;
+  background-color: #ff00ff;
   color: white;
   border: none;
   border-radius: 5px;
@@ -329,4 +329,8 @@ footer {
   position: fixed;
   bottom: 0;
   left: 0;
+}
+.input.tempo-input{
+  background-color: #df39c9;
+
 }
