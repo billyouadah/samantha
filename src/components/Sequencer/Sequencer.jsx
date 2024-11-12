@@ -14,6 +14,12 @@ const instruments = {
   CH: CH,
 };
 
+// Options de notes pour la basse (incluant les notes noires)
+const noteOptions = [
+  "C1", "C#1", "D1", "D#1", "E1", "F1", "F#1", "G1", "G#1", "A1", "A#1", "B1",
+  "C2", "C#2", "D2", "D#2", "E2", "F2", "F#2", "G2", "G#2", "A2", "A#2", "B2"
+];
+
 const Sequencer = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [tempo, setTempo] = useState(120);
@@ -23,12 +29,7 @@ const Sequencer = () => {
       Kick: false,
       OH: false,
       CH: false,
-      BassC: false,
-      BassD: false,
-      BassE: false,
-      BassF: false,
-      BassG: false,
-      BassA: false,
+      BassNote: "", // Chaque pas de basse commence avec une note vide
     })
   );
   const [mutes, setMutes] = useState({
@@ -36,12 +37,7 @@ const Sequencer = () => {
     Kick: false,
     OH: false,
     CH: false,
-    BassC: false,
-    BassD: false,
-    BassE: false,
-    BassF: false,
-    BassG: false,
-    BassA: false,
+    Bass: false,
   });
   const [effects, setEffects] = useState({
     Clap: false,
@@ -51,7 +47,7 @@ const Sequencer = () => {
     Bass: false,
   });
   const [bassVolume] = useState(() => new Tone.Volume(5).toDestination());
-  
+
   // Nouvel état pour l'enveloppe de la basse
   const [envelope, setEnvelope] = useState({
     attack: 0.01,
@@ -86,22 +82,13 @@ const Sequencer = () => {
     const repeat = (time) => {
       steps.forEach((step, index) => {
         Object.keys(step).forEach((instrument) => {
-          if (step[instrument] && !mutes[instrument]) {
-            if (instrument === "BassC") {
-              bassSynth.triggerAttackRelease("C2", "8n", time + index * Tone.Time("16n"));
-            } else if (instrument === "BassD") {
-              bassSynth.triggerAttackRelease("D2", "8n", time + index * Tone.Time("16n"));
-            } else if (instrument === "BassE") {
-              bassSynth.triggerAttackRelease("E2", "8n", time + index * Tone.Time("16n"));
-            } else if (instrument === "BassF") {
-              bassSynth.triggerAttackRelease("F2", "8n", time + index * Tone.Time("16n"));
-            } else if (instrument === "BassG") {
-              bassSynth.triggerAttackRelease("G2", "8n", time + index * Tone.Time("16n"));
-            } else if (instrument === "BassA") {
-              bassSynth.triggerAttackRelease("A2", "8n", time + index * Tone.Time("16n"));
-            } else {
-              players[instrument].start(time + index * Tone.Time("16n"));
+          if (instrument === "BassNote" && step.BassNote) {
+            // Ne joue pas la note de basse si elle est muette
+            if (!mutes.Bass) {
+              bassSynth.triggerAttackRelease(step.BassNote, "8n", time + index * Tone.Time("16n"));
             }
+          } else if (step[instrument] && !mutes[instrument]) {
+            players[instrument].start(time + index * Tone.Time("16n"));
           }
         });
       });
@@ -118,14 +105,22 @@ const Sequencer = () => {
     return () => {
       loop.dispose();
     };
-  }, [isPlaying, steps, tempo, mutes, effects, envelope]); // Ajouter 'envelope' comme dépendance
+  }, [isPlaying, steps, tempo, mutes, effects, envelope, bassVolume]); // Ajouter bassVolume et envelope comme dépendance
 
+  // Fonction pour modifier les instruments (Kick, Clap, etc.)
   const toggleInstrumentOnStep = (stepIndex, instrument) => {
     const newSteps = [...steps];
     newSteps[stepIndex] = {
       ...newSteps[stepIndex],
       [instrument]: !newSteps[stepIndex][instrument],
     };
+    setSteps(newSteps);
+  };
+
+  // Fonction pour changer la note de basse sur un pas
+  const handleBassNoteChange = (stepIndex, note) => {
+    const newSteps = [...steps];
+    newSteps[stepIndex] = { ...newSteps[stepIndex], BassNote: note }; // Mettre à jour la note spécifique du pas
     setSteps(newSteps);
   };
 
@@ -178,33 +173,37 @@ const Sequencer = () => {
             </button>
           </div>
         ))}
-        {/* Lignes pour les notes de basse */}
-        {["C", "D", "E", "F", "G", "A"].map((note) => (
-          <div key={note} className="step-row">
-            <div className="drum-pad-container">
-              <span>{note}2</span>
-            </div>
-            {steps.map((step, index) => (
-              <button
-                key={index}
-                className={`step ${step[`Bass${note}`] ? "active" : ""}`}
-                onClick={() => toggleInstrumentOnStep(index, `Bass${note}`)}
-              >
-                {index + 1}
-              </button>
-            ))}
-            <button className="effect-toggle" onClick={() => toggleEffect(`Bass${note}`)}>
-              {effects.Bass ? "Disable Effect" : "Enable Effect"}
-            </button>
-            <button className="mute-toggle" onClick={() => toggleMute(`Bass${note}`)}>
-              {mutes[`Bass${note}`] ? "Unmute" : "Mute"}
-            </button>
+
+        {/* Ligne unique pour les notes de basse */}
+        <div className="step-row">
+          <div className="drum-pad-container">
+            <span>Bass</span>
           </div>
-        ))}
+          {steps.map((step, index) => (
+            <div key={index}>
+              <select
+                value={step.BassNote || ""}
+                onChange={(e) => handleBassNoteChange(index, e.target.value)}
+              >
+                <option value="">--</option> {/* Option vide pour désactiver une note */}
+                {noteOptions.map((note) => (
+                  <option key={note} value={note}>
+                    {note}
+                  </option>
+                ))}
+              </select>
+            </div>
+          ))}
+          <button className="mute-toggle" onClick={() => toggleMute("Bass")}>
+            {mutes.Bass ? "Unmute" : "Mute"}
+          </button>
+        </div>
       </div>
+
       <button className="play-button" onClick={() => setIsPlaying(!isPlaying)}>
         {isPlaying ? "Stop" : "Play"}
       </button>
+
       <div className="tempo-control">
         <input
           type="range"
@@ -215,6 +214,7 @@ const Sequencer = () => {
         />
         <span className="tempo-value">{tempo} BPM</span>
       </div>
+
       <div className="bass-volume-control">
         <label htmlFor="bass-volume">Bass Volume</label>
         <input
@@ -226,6 +226,7 @@ const Sequencer = () => {
           onChange={changeBassVolume}
         />
       </div>
+
       {/* Section d'enveloppe pour la basse */}
       <div className="envelope-control">
         <h3>Envelope Control</h3>
