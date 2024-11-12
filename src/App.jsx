@@ -4,9 +4,8 @@ import "./App.css";
 import React from "react";
 import Sequencer from "./components/Sequencer/Sequencer";
 import Header from "./components/Header/Header";
-import Todo from "./components/Todo";
-
-// import Footer from "./components/Footer/Footer";
+// import Todo from "./components/Todo";
+import Footer from "./components/Footer/Footer";
 import { Container } from "react-bootstrap";
 
 function App() {
@@ -14,7 +13,7 @@ function App() {
     <div className="App">
       <Header />
       <Container>
-      <Todo/>
+      {/* <Todo/> */}
 
         <div className="App-body">
 
@@ -22,7 +21,7 @@ function App() {
           <Sequencer />
         </div>
       </Container>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }
